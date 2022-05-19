@@ -82,6 +82,12 @@ const handler = async () => {
       return;
     }
 
+    if (keyWithoutExtension.includes(`_${prefix}`)) {
+      console.log('Already a Thumbnail.');
+      context.fail('Already a Thumbnail.');
+      return;
+    }
+
     // Check that the image type is supported
     const fileExt = typeMatch[1].toLowerCase();
     if (
@@ -131,11 +137,11 @@ const handler = async () => {
 
     console.log('Image was resized:', JSON.stringify(uploadedDataResized));
 
-    // context.succeed();
+    context.succeed();
   } catch (error) {
     console.log('Error calling S3 getObject: ' + error);
     console.error('Error calling S3 getObject:' + error);
-    // context.fail('Error calling S3 getObject: ' + error);
+    context.fail('Error calling S3 getObject: ' + error);
   }
 };
 
