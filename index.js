@@ -3,12 +3,6 @@
 // Create a client to read objects from S3
 const AWS = require('aws-sdk');
 
-//configuring the AWS environment
-AWS.config.update({
-  accessKeyId: 'AKIATSWZCGZ725IJ4MCM',
-  secretAccessKey: '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'
-});
-
 const s3 = new AWS.S3();
 
 // Libraries for image resize.
